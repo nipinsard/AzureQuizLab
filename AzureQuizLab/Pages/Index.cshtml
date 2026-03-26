@@ -9,3 +9,13 @@
     <h1 class="display-4">Nico P</h1>
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+
+@if (Model.MaintenanceMode)
+{
+    <p class="alert alert-warning">🚧 Le site est actuellement en maintenance. Veuillez réessayer plus tard.</p>
+}
+else
+{
+    <p class="alert alert-success">✅ Le site est opérationnel. Bienvenue !</p>
+}
