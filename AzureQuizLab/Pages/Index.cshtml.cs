@@ -4,12 +4,18 @@ namespace AzureQuizLab.Pages
 {
     public class IndexModel : PageModel
     {
+        private readonly IConfiguration _configuration;
+
         public bool MaintenanceMode { get; set; }
+
+        public IndexModel(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
         public void OnGet()
         {
-            var configurationManager = new ConfigurationManager();
-            MaintenanceMode = configurationManager.GetValue<bool>("MaintenanceMode", false);
+            MaintenanceMode = _configuration.GetValue<bool>("MaintenanceMode", false);
         }
     }
 }
