@@ -1,16 +1,21 @@
+using AzureQuizLab.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AzureQuizLab.Pages
 {
     public class IndexModel : PageModel
     {
+        private readonly QuizDbContext _context;
         private readonly ILogger<IndexModel> _logger;
         private readonly IConfiguration _configuration;
 
         public bool MaintenanceMode { get; set; }
+        public int QuizCount { get; set; }
+        public int QuestionCount { get; set; }
 
-        public IndexModel(ILogger<IndexModel> logger, IConfiguration configuration)
+        public IndexModel(QuizDbContext context, ILogger<IndexModel> logger, IConfiguration configuration)
         {
+            _context = context;
             _logger = logger;
             _configuration = configuration;
         }
@@ -18,6 +23,9 @@ namespace AzureQuizLab.Pages
         public void OnGet()
         {
             MaintenanceMode = _configuration.GetValue<bool>("MaintenanceMode", false);
+
+            QuizCount = _context.Quizzes.Count();
+            QuestionCount = _context.Questions.Count();
         }
     }
 }
