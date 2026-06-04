@@ -417,3 +417,4 @@ FodyWeavers.xsd
 *.msm
 *.msp
 /AzureQuizLab/appsettings.Development.json
+/AzureQuizLab/appsettings.Development.json
