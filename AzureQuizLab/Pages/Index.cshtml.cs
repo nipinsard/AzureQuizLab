@@ -9,7 +9,7 @@ namespace AzureQuizLab.Pages
 
         public bool MaintenanceMode { get; set; }
 
-        public IndexModel(IConfiguration configuration)
+        public IndexModel(ILogger<IndexModel> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
